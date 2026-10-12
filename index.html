@@ -26,45 +26,30 @@
         <p id="resultadoEstado"></p>
     </div>
 
-<script>
+    <script>
+        const cantidadNotas = 3;
 
-let data1 = [];
-const cantidadNotas = 3;
+        function calcularPromedio() {
+            const nota1 = parseFloat(document.getElementById("nota1").value);
+            const nota2 = parseFloat(document.getElementById("nota2").value);
+            const nota3 = parseFloat(document.getElementById("nota3").value);
 
-function calcularPromedio() {
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
+                document.getElementById("resultadoPromedio").innerHTML = "Debe ingresar las tres notas.";
+                return;
+            }
 
-    const nota1 = parseFloat(document.getElementById("nota1").value);
-    const nota2 = parseFloat(document.getElementById("nota2").value);
-    const nota3 = parseFloat(document.getElementById("nota3").value);
+            const promedio = (nota1 + nota2 + nota3) / cantidadNotas;
 
-    console.log("valores capturados:", nota1, nota2, nota3);
+            document.getElementById("resultadoPromedio").innerHTML = "Promedio: " + promedio.toFixed(2);
 
-    if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3)) {
-        document.getElementById("resultadoPromedio").innerHTML = "Debe ingresar las tres notas.";
-        return;
-    }
-
-    const promedio = (nota1 + nota2 + nota3) / cantidadNotas;
-
-    document.getElementById("resultadoPromedio").innerHTML = "Promedio: " + promedio.toFixed(2);
-
-    if (promedio >= 3.0) {
-        document.getElementById("resultadoEstado").innerHTML = "Resultado: aprobado";
-    } else {
-        document.getElementById("resultadoEstado").innerHTML = "Resultado: reprobado";
-    }
-
-    console.log("promedio calculado");
-}
-
-// function calcularAntiguo(nota1, nota2) {
-//     let suma = nota1 + nota2;
-//     return suma / 2;
-// }
-
-console.log("pagina cargada");
-
-</script>
+            if (promedio >= 3.0) {
+                document.getElementById("resultadoEstado").innerHTML = "Resultado: aprobado";
+            } else {
+                document.getElementById("resultadoEstado").innerHTML = "Resultado: reprobado";
+            }
+        }
+    </script>
 
 </body>
 </html>
